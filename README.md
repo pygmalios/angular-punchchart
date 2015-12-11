@@ -21,10 +21,13 @@ To your `bower.json` file. Then run
 
     bower install
 
-This will copy the angular-adaptive-detection files into your `bower_components` folder, along with its dependencies. Load the script files in your application:
+This will copy files into your `bower_components` folder, along with its dependencies. Load the script files in your application:
 ```html
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
 <script type="text/javascript" src="bower_components/pygmalios/angular-punchchart.min.js"></script>
+<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 ```
 ```js
 var myAppModule = angular.module('MyApp', ['pygmalios.punchchart']);
