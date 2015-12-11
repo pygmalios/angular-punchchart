@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="pygmalios">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pygmalios Punch Chart</title>
+
+</head>
+
+<!-- Body -->
+<body ng-controller="appCtrl" >
+
+
+<!-- Main Wrapper -->
+<div id="wrapper">
+
+    <div punch-chart chart-data="data" xlabels="xLabels" ylabels="yLabels"></div>
+    <div punch-chart chart-data="data" xlabels="xLabels2" ylabels="yLabels2" options="options2"></div>
+
+    <button ng-click="generate()">Generate</button>
+</div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+<script src="src/angular-punchchart.js"></script>
+
+<script>
+    (function () {
+        angular.module('pygmalios', [
+            'pygmalios.punchchart'
+        ]);
+
+        var module = angular.module('pygmalios');
+
+        module.controller('appCtrl', function($scope){
+
+            $scope.yLabels = ['Po', 'Ut', 'St', 'Št', 'Pi', 'So', 'Ne'];
+            $scope.xLabels = [
+                '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00',
+                '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00',
+                '20:00', '21:00', '22:00', '23:00'
+            ];
+
+            $scope.yLabels2 = ['Po', 'Ut'];
+            $scope.xLabels2 = [
+                '00:00', '01:00', '02:00', '03:00'
+            ];
+
+            $scope.options2 = {
+                'PUNCT_COLOR': 'red'
+            };
+
+            $scope.generate = function() {
+
+                var data = [
+
+                ];
+
+                for (var y=0; y<7; y++) {
+                    var xAxis = [];
+                    for (var x=0; x<24; x++) {
+                        xAxis.push(Math.floor(Math.random() * 100));
+                    }
+
+                    data.push(xAxis);
+                }
+
+                $scope.data = data;
+            };
+
+            $scope.generate();
+
+        });
+    })();
+</script>
+
+</html>
