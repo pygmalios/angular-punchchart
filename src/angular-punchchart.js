@@ -3,7 +3,7 @@
 
 var module = angular.module('pygmalios.punchchart', []);
 
-module.directive('punchChart', function($window) {
+module.directive('punchChart', ['$window', function($window) {
 
     var getMaxValue = function(data) {
         var max = 1;
@@ -183,5 +183,5 @@ module.directive('punchChart', function($window) {
             redraw();
         }
     };
-});
+}]);
 })();
