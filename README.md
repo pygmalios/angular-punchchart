@@ -1,4 +1,4 @@
-# angular-punchchart v0.1.0 [![Build Status](https://travis-ci.org/pygmalios/angular-punchchart.png?branch=master)](https://travis-ci.org/pygmalios/angular-punchchart)
+# angular-punchchart v0.1.1 [![Build Status](https://travis-ci.org/pygmalios/angular-punchchart.png?branch=master)](https://travis-ci.org/pygmalios/angular-punchchart)
 
 Punch chart component for Pygmalios platform with auto scale feature.
 
