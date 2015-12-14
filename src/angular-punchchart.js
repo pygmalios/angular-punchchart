@@ -6,7 +6,7 @@ var module = angular.module('pygmalios.punchchart', []);
 module.directive('punchChart', ['$window', function($window) {
 
     var getMaxValue = function(data) {
-        var max = 1;
+        var max = 0;
         data.forEach(function(xValues){
             xValues.forEach(function(value){
                 if (max < value) {
@@ -63,15 +63,17 @@ module.directive('punchChart', ['$window', function($window) {
             svg.call(tip);
 
             var init = function() {
+                scope.chartData = scope.chartData || [];
+
                 maxValue = getMaxValue(scope.chartData);
 
                 yAxisLength = scope.chartData.length;
-                xAxisLength = scope.chartData[0] ? scope.chartData[0].length : 1;
+                xAxisLength = scope.chartData[0] ? scope.chartData[0].length : 0;
 
                 LINE_SIZE_Y = (VIEWPORT_HEIGHT - PADDING_TOP - LABEL_BOTTOM) / (scope.ylabels.length + 1);
                 LINE_SIZE_X = (VIEWPORT_WIDTH - LABEL_BOTTOM) / (scope.xlabels.length + 1);
                 MAX_RADIUS = LINE_SIZE_X < LINE_SIZE_Y ? Math.floor(LINE_SIZE_X * 9 / 20) : Math.floor(LINE_SIZE_Y * 9 / 20);
-                valueScaleFactor = maxValue / MAX_RADIUS;
+                valueScaleFactor = (maxValue / MAX_RADIUS) || 1;
 
                 scope.options = scope.options || {};
                 PUNCT_COLOR = scope.options.PUNCT_COLOR || '#62BFCE';
