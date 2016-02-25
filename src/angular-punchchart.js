@@ -90,20 +90,19 @@ module.directive('punchChart', ['$window', function($window) {
                 }
 
                 var rate = value / maxValue;
-                var color = 'blue';
-
+                var color = '#7EB26D';
 
                 if (rate > 0.3) {
-                    color = '#00EFFE';
+                    color = '#6ED0E0';
                 }
                 if (rate > 0.5) {
-                    color = '#AFFF4E';
+                    color = '#1F78C1';
                 }
                 if (rate > 0.7) {
-                    color = '#FF6F40';
+                    color = '#EF843C';
                 }
                 if (rate > 0.9) {
-                    color = 'red';
+                    color = '#E24D42';
                 }
 
                 console.log(rate, color);
