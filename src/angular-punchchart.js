@@ -76,11 +76,39 @@ module.directive('punchChart', ['$window', function($window) {
                 valueScaleFactor = (maxValue / MAX_RADIUS) || 1;
 
                 scope.options = scope.options || {};
-                PUNCT_COLOR = scope.options.PUNCT_COLOR || '#62BFCE';
+                PUNCT_COLOR = scope.options.PUNCT_COLOR;
                 LABEL_COLOR = scope.options.LABEL_COLOR || '#7F7F7F';
                 LINE_COLOR = scope.options.LINE_COLOR || '#D0D0D0';
                 FONT_SIZE = scope.options.FONT_SIZE || 10;
                 FONT_WEIGHT = scope.options.FONT_WEIGHT || 100;
+            };
+
+            var getPunctColor = function(value){
+
+                if (PUNCT_COLOR) {
+                    return PUNCT_COLOR;
+                }
+
+                var rate = value / maxValue;
+                var color = 'blue';
+
+
+                if (rate > 0.3) {
+                    color = '#00EFFE';
+                }
+                if (rate > 0.5) {
+                    color = '#AFFF4E';
+                }
+                if (rate > 0.7) {
+                    color = '#FF6F40';
+                }
+                if (rate > 0.9) {
+                    color = 'red';
+                }
+
+                console.log(rate, color);
+
+                return color;
             };
 
             var drawLabels = function() {
@@ -140,7 +168,7 @@ module.directive('punchChart', ['$window', function($window) {
                             .attr('cy', (y + 1) * LINE_SIZE_Y + PADDING_TOP)
                             .attr('r', scope.chartData[y][x] / valueScaleFactor)
                             .attr('data', scope.chartData[y][x])
-                            .attr('fill', PUNCT_COLOR)
+                            .attr('fill', getPunctColor(scope.chartData[y][x]))
                             .on('mouseover', function(){
                                 tip.html(d3.select(this).attr('data'));
                                 tip.show();
