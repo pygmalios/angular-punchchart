@@ -1,6 +1,6 @@
 {
   "name": "angular-punchchart",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Punch chart component for Pygmalios platform",
   "authors": ["Jan Antala <hello@janantala.com>"],
   "license": "MIT",
